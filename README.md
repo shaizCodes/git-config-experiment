@@ -39,13 +39,15 @@ Configuration set to someone else' credentials:
 > [!NOTE]
 > I have taken her consent for this experimentation, and this work is just for educational cause.
 
-![Colleague's git configuration](images/03-different-credentials/git-config--faked.PNG)
+![Colleague's git configuration](images/03-different-credentials/git-config--faked.jpg)
 
-### Phase 4: Back to Original
-*To be added*
+### Phase 4: Git and GitHub Results
 
-### Phase 5: GitHub Results
-*To be added*
+> `git log` results
+> ![Git Log results](images/04-git-and-github-results/git-log.jpg)
+
+> GitHub Commits History
+> ![Git Log results](images/04-git-and-github-results/github-commits-history.jpg)
 
 ## Project Structure
 
@@ -56,8 +58,7 @@ Configuration set to someone else' credentials:
 │   ├── 01-initial-setup/          # Screenshots before any commits
 │   ├── 02-original-credentials/   # After commits with my original git config
 │   ├── 03-different-credentials/  # After commits with different git config
-│   ├── 04-back-to-original/       # After commits with original config again
-│   └── 05-github-results/         # Screenshots of GitHub showing contributors and commits
+│   └── 04-git-and-github-results/         # Screenshots of GitHub showing contributors and commits
 └── [experiment files will be added here during the process]
 ```
 
