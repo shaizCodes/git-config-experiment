@@ -166,6 +166,12 @@ Date:   Wed Jan 02 10:30:00 2024 +0000
     Test commit message
 ```
 
+After pushing to GitHub, your commit should display the green **"Verified"** badge:
+
+![Verified Commit on GitHub](images/04-git-and-github-results/verified-badge-on-commit.JPG)
+
+*Success! The green "Verified" badge confirms your commit is cryptographically signed and authenticated.*
+
 ## Signing Commits
 
 Once GPG is configured, all commits will be automatically signed if you enabled `commit.gpgSign true`.
