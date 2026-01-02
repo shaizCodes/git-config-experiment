@@ -11,6 +11,18 @@ A simple experiment out of curiosity to see what happens when you commit with di
 5. Push all commits to GitHub
 6. Screenshot the GitHub repository to see how contributors and commits are attributed
 
+## Project Structure
+
+```
+/
+├── README.md
+└── images/
+    ├── 01-initial-setup/             # Screenshots before any commits
+    ├── 02-original-credentials/      # After commits with my original git config
+    ├── 03-different-credentials/     # After commits with different git config
+    └── 04-git-and-github-results/    # Screenshots of GitHub showing contributors and commits
+```
+
 ## Setup
 
 Before making commits, configure git with your credentials:
@@ -48,19 +60,6 @@ Configuration set to someone else' credentials:
 
 > GitHub Commits History
 > ![Git Log results](images/04-git-and-github-results/github-commits-history.jpg)
-
-## Project Structure
-
-```
-/
-├── README.md
-├── images/
-│   ├── 01-initial-setup/          # Screenshots before any commits
-│   ├── 02-original-credentials/   # After commits with my original git config
-│   ├── 03-different-credentials/  # After commits with different git config
-│   └── 04-git-and-github-results/         # Screenshots of GitHub showing contributors and commits
-└── [experiment files will be added here during the process]
-```
 
 ## Notes
 
