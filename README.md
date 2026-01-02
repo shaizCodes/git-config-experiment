@@ -11,6 +11,19 @@ A simple experiment out of curiosity to see what happens when you commit with di
 5. Push all commits to GitHub
 6. Screenshot the GitHub repository to see how contributors and commits are attributed
 
+## Setup
+
+Before making commits, configure git with your credentials:
+
+```bash
+git config --global user.email "your@example.com"
+git config --global user.name "Your Name"
+```
+
+If you get an error about empty ident, run the commands above to set your identity:
+
+![Author identity unknown error](images/01-initial-setup/identity-error.jpg)
+
 ## Project Structure
 
 ```
