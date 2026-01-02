@@ -39,6 +39,10 @@ GPG (GNU Privacy Guard) is a free implementation of the OpenPGP standard. When s
 > - Even with a faked email, the signature proves your identity
 > - GitHub verifies cryptographic ownership, not just email matching
 
+![Unverified Commits on GitHub](images/04-git-and-github-results/unverified-badge-against-commit.JPG)
+
+*Example of unverified commits - notice the "Unverified" badge indicating these commits lack cryptographic proof of authorship.*
+
 ## Step-by-Step Setup
 
 ### 1. Generate a GPG Key
