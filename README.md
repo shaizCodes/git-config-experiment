@@ -18,11 +18,9 @@ A simple experiment out of curiosity to see what happens when you commit with di
     - [Non-existent GitHub User Commit](#non-existent-github-user-commit)
 - [Conclusion](#conclusion)
   - [Key Learnings](#key-learnings)
-  - [Findings](#findings)
   - [Possible Consequences](#possible-consequences)
-  - [Is This a Bug or Intentional Feature?](#is-this-a-bug-or-intentional-feature)
-  - [How to Use This Responsibly](#how-to-use-this-responsibly)
-  - [Final Notes](#final-notes)
+  - [Defense & Best Practices](#defense--best-practices)
+- [References](#references)
 
 ## Project Structure
 
@@ -33,7 +31,7 @@ A simple experiment out of curiosity to see what happens when you commit with di
     ├── 01-initial-setup/             # Screenshots before any commits
     ├── 02-original-credentials/      # After commits with my original git config
     ├── 03-different-credentials/     # After commits with different git config
-    └── 04-git-and-github-results/    # Screenshots of GitHub showing contributors and commits
+    └── 04-git-and-github-results/    # Screenshots showing contributors and commits
 ```
 
 ## Experiment Flow
@@ -103,84 +101,59 @@ Configuration set to someone else' credentials:
 ### Key Learnings
 
 > [!IMPORTANT]
-> This experiment reveals critical differences between local Git configuration and GitHub's user attribution system. Git commits are attributed based on the email and name in the local configuration, but GitHub's display and functionality depend on whether those credentials match actual GitHub accounts.
-
-#### Findings
-
-1. **Existent GitHub User (Real Account)**
-   - When commits are made with credentials matching a real GitHub account, that user appears as a contributor
-   - The GitHub profile is clickable and navigable
-   - Contribution history and statistics are properly attributed
-   - The user appears in the contributors list on the repository
-
-2. **Non-Existent User (Fake Credentials)**
-   - Commits are still recorded in `git log` with the configured name and email
-   - The commits are pushed to GitHub successfully
-   - However, since the user doesn't exist on GitHub, they don't appear in the contributors list
-   - The author name appears on commits but is **not clickable or navigable**
-   - No profile information or contribution statistics are available for the non-existent user
-
-> [!NOTE]
-> This demonstrates that GitHub relies on matching email addresses to registered GitHub accounts to create the connection between commits and user profiles.
+> This experiment reveals critical differences between local Git configuration and GitHub's user attribution system:
+>
+> **Findings:**
+> - Existent GitHub user with matching email → Appears as contributor with clickable profile
+> - Non-existent user with fake credentials → Commits visible but unverified, no profile link
+> - Identity is based on local configuration file anyone can change
+>
+> **Key Insight:** Git trusts the local configuration, but GitHub trusts the email-to-account mapping.
 
 ### Possible Consequences
 
 > [!WARNING]
 > **Security & Attribution Risks**
-> - **Identity Spoofing**: Anyone can attribute commits to a real GitHub user by using their email in local git configuration
-> - **False Attribution**: Commits can be made to appear as if they were done by someone else (with their consent in this case, but malicious intent is possible)
-> - **Reputation Impact**: A user's contribution history could be polluted with commits they didn't actually make
-> - **Compliance Issues**: In professional settings, this could violate code review policies and accountability standards
+> - **Identity Spoofing**: Anyone can attribute commits to a real GitHub user by changing local git config
+> - **False Attribution**: Commits can be made to appear as if done by someone else
+> - **Reputation Impact**: A user's contribution history could be polluted
+> - **Compliance Issues**: Could violate code review policies in professional settings
 
-### Is This a Bug or Intentional Feature?
+### Defense & Best Practices
 
-> [!IMPORTANT]
-> **This is an Intentional Feature, Not a Bug**
-> 
-> GitHub's system works as designed: it matches the commit author email to registered GitHub accounts. This is intentional because:
-> - It allows flexibility in local development environments
-> - Users can commit from different machines/configurations
-> - It respects the principle that email is the primary identifier
-> 
-> However, GitHub has security measures in place.
+> [!CRITICAL]
+> **GPG Signing is the Real Defense Against Identity Spoofing**
+>
+> GPG (GNU Privacy Guard) cryptographically proves you made a commit:
+> - Only your private key can sign commits
+> - GitHub verifies the signature against your public key
+> - Even with a faked email, the signature proves your identity
+> - GitHub marks verified commits with a ✓ badge
 
-### How to Use This Responsibly
+**Quick Setup:**
+```bash
+gpg --full-generate-key                          # Generate key
+gpg --list-secret-keys --keyid-format=long       # Get key ID
+git config --global user.signingkey <KEY_ID>     # Set key
+git config --global commit.gpgSign true          # Enable signing
+gpg --armor --export <KEY_ID>                    # Export public key
+# Add public key to GitHub Settings → SSH and GPG keys
+```
 
-> [!TIP]
-> **Best Practices for Git Configuration**
-> 
-> 1. **Always use your own credentials** in your local git configuration
->    ```bash
->    git config --global user.email "your.email@github.com"
->    git config --global user.name "Your Name"
->    ```
-> 
-> 2. **Verify your configuration** before making commits:
->    ```bash
->    git config --global user.email
->    git config --global user.name
->    ```
-> 
-> 3. **For collaborative work**, use GPG signing to cryptographically verify commits:
->    ```bash
->    git config --global commit.gpgSign true
->    ```
-> 
-> 4. **Communicate** with team members about who is responsible for which commits
+📖 **For detailed setup instructions, see [GPG_SETUP.md](GPG_SETUP.md)**
 
-> [!NOTE]
-> **GitHub's Response to Impersonation**
-> 
-> While technically possible, GitHub addresses this through:
-> - Public commit history visibility (anyone can audit commits)
-> - GPG signature verification (proves cryptographic ownership)
-> - Email verification (prevents unauthorized commits with someone else's email)
-> - Repository access logs and GitHub's audit system
-> 
-> For sensitive repositories, enable additional security measures like branch protection rules and required status checks.
+**Additional Security Measures:**
+- Use your own credentials in git config
+- Enable two-factor authentication (2FA) on GitHub
+- Require GPG-signed commits for sensitive repositories
+- Regularly audit commit history and account activity
 
-### Final Notes
+## References
 
-This experiment demonstrates the importance of understanding the distinction between local Git configuration and GitHub's identity verification system. While the technical capability to misattribute commits exists, it should only be used for educational purposes (with proper consent) and serves as a reminder to implement proper security measures in professional and sensitive repositories.
+### Documentation
 
-The key takeaway: **Git trusts the local configuration, but GitHub trusts the email-to-account mapping** — and this is by design.
+- **[GPG_SETUP.md](GPG_SETUP.md)** - Detailed GPG key generation and setup guide
+- **[GitHub: Generating a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)** - Official GPG key generation guide
+- **[GPG Official Documentation](https://gnupg.org/)** - GNU Privacy Guard documentation
+- **[GitHub: Commit Signature Verification](https://docs.github.com/en/authentication/managing-commit-signature-verification)** - Official GitHub verification documentation
+- **[GitHub Security Guide](https://docs.github.com/en/code-security)** - Comprehensive security documentation
