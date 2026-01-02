@@ -2,14 +2,21 @@
 
 A simple experiment out of curiosity to see what happens when you commit with different git user configurations and then push to GitHub.
 
-## Experiment Flow
+## Table of Contents
 
-1. Add initial screenshots (before any commits)
-2. Set git configuration to my original credentials and make some commits
-3. Change git configuration to someone else's credentials and make more commits
-4. Change git configuration back to my original credentials and make final commits
-5. Push all commits to GitHub
-6. Screenshot the GitHub repository to see how contributors and commits are attributed
+- [Project Structure](#project-structure)
+- [Experiment Flow](#experiment-flow)
+- [Setup](#setup)
+- [Experiment Documentation](#experiment-documentation)
+  - [Phase 2: Original Credentials](#phase-2-original-credentials)
+  - [Phase 3: Different Credentials](#phase-3-different-credentials)
+  - [Phase 4: Git and GitHub Results](#phase-4-git-and-github-results)
+    - [git log results](#git-log-results)
+    - [GitHub Commits History](#github-commits-history)
+    - [GitHub Contributors](#github-contributors)
+    - [Non-existent Git User Configuration](#non-existent-git-user-configuration)
+    - [Non-existent GitHub User Commit](#non-existent-github-user-commit)
+- [Notes](#notes)
 
 ## Project Structure
 
@@ -22,6 +29,16 @@ A simple experiment out of curiosity to see what happens when you commit with di
     ├── 03-different-credentials/     # After commits with different git config
     └── 04-git-and-github-results/    # Screenshots of GitHub showing contributors and commits
 ```
+
+## Experiment Flow
+
+1. Add initial screenshots (before any commits)
+2. Set git configuration to my original credentials and make some commits
+3. Change git configuration to someone else's credentials and make more commits
+4. Change git configuration back to my original credentials and make final commits
+5. Push all commits to GitHub
+6. Screenshot the GitHub repository to see how contributors and commits are attributed
+
 
 ## Setup
 
@@ -55,20 +72,25 @@ Configuration set to someone else' credentials:
 
 ### Phase 4: Git and GitHub Results
 
-> `git log` results
-> ![Git Log results](images/04-git-and-github-results/git-log.jpg)
+#### git log results
 
-> GitHub Commits History
-> ![GitHub Commits History](images/04-git-and-github-results/github-commits-history.jpg)
+![Git Log results](images/04-git-and-github-results/git-log.jpg)
 
-> GitHub Contributors
-> ![GitHub Contributors](images/04-git-and-github-results/github-contributors.jpg)
+#### GitHub Commits History
 
-> Non-existent Git User Configuration
-> ![Non-existent GitHub Contributor](images/04-git-and-github-results/nonexistent-git-user-config.jpg)
+![GitHub Commits History](images/04-git-and-github-results/github-commits-history.jpg)
 
-> Non-existent GitHub User Commit
-> ![Non-existent GitHub User Commit](images/04-git-and-github-results/nonexistent-github-user-commit.jpg)
+#### GitHub Contributors
+
+![GitHub Contributors](images/04-git-and-github-results/github-contributors.jpg)
+
+#### Non-existent Git User Configuration
+
+![Non-existent GitHub Contributor](images/04-git-and-github-results/nonexistent-git-user-config.jpg)
+
+#### Non-existent GitHub User Commit
+
+![Non-existent GitHub User Commit](images/04-git-and-github-results/nonexistent-github-user-commit.jpg)
 
 ## Notes
 
