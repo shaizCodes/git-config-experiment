@@ -71,7 +71,7 @@ This will prompt you through an interactive wizard:
 
 After successful generation, you should see confirmation:
 
-![GPG Key Generated Successfully](images/05-security-measures/gpg-key-generated-locally.jpg)
+![GPG Key Generated Successfully](images/05-security-measures/gpg-key-generated-locally.JPG)
 
 ### 2. List Your Keys
 
@@ -94,7 +94,7 @@ ssb   rsa4096/XYZ789UVW123KLMN 2024-01-02 [E]
 
 Your **key ID** is the part after the slash: `ABC123DEF456GHIJ` in above output.
 
-![GPG Keys Listed](images/05-security-measures/gpg-keys-listed.jpg)
+![GPG Keys Listed](images/05-security-measures/gpg-keys-listed.JPG)
 
 In the above picture, the highlighted text is the full fingerprint key.
 
@@ -117,7 +117,7 @@ git config --global user.signingkey
 git config --global commit.gpgSign
 ```
 
-![Setup Commit Signing with GPG Key](images/05-security-measures/setup-commit-signing-gpg-key.jpg)
+![Setup Commit Signing with GPG Key](images/05-security-measures/setup-commit-signing-gpg-key.JPG)
 
 In this picture, I used the full fingerprint key.
 
@@ -131,7 +131,7 @@ gpg --armor --export REPLACE_ME_WITH_KEY
 
 This outputs your public key in ASCII armor format. Copy the entire output including the `-----BEGIN` and `-----END` lines.
 
-![Public GPG Key Export](images/05-security-measures/public-gpg-key.jpg)
+![Public GPG Key Export](images/05-security-measures/public-gpg-key.JPG)
 
 Then add it to GitHub:
 
@@ -141,7 +141,7 @@ Then add it to GitHub:
 4. Click **Add GPG key**
 5. Confirm with your GitHub password
 
-![GitHub GPG Key Setup Page](images/05-security-measures/github-gpg-key-setup.jpg)
+![GitHub GPG Key Setup Page](images/05-security-measures/github-gpg-key-setup.JPG)
 
 > [!TIP]
 > You can add multiple GPG keys to your GitHub account. If you use multiple machines, generate a key on each and add them all.
