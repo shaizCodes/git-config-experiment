@@ -24,6 +24,22 @@ If you get an error about empty ident, run the commands above to set your identi
 
 ![Author identity unknown error](images/01-initial-setup/identity-error.jpg)
 
+## Experiment Documentation
+
+### Phase 2: Original Credentials
+Configuration set to my actual credentials:
+
+![Original git configuration](images/02-original-credentials/git-config--original.jpg)
+
+### Phase 3: Different Credentials
+*To be added*
+
+### Phase 4: Back to Original
+*To be added*
+
+### Phase 5: GitHub Results
+*To be added*
+
 ## Project Structure
 
 ```
