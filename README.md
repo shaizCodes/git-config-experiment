@@ -64,6 +64,12 @@ Configuration set to someone else' credentials:
 > GitHub Contributors
 > ![GitHub Contributors](images/04-git-and-github-results/github-contributors.jpg)
 
+> Non-existent Git User Configuration
+> ![Non-existent GitHub Contributor](images/04-git-and-github-results/nonexistent-git-user-config.jpg)
+
+> Non-existent GitHub User Commit
+> ![Non-existent GitHub User Commit](images/04-git-and-github-results/nonexistent-github-user-commit.jpg)
+
 ## Notes
 
 This is just to understand what happens with local git configuration vs GitHub's attribution system.
