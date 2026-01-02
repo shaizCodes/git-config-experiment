@@ -181,6 +181,23 @@ git verify-commit <commit-hash>
 
 ## Troubleshooting
 
+### "gpg: signing failed: Inappropriate ioctl for device"
+
+This error occurs when GPG can't prompt for your passphrase. 
+
+**Quick fix:**
+```bash
+export GPG_TTY=$(tty)
+```
+
+**Permanent fix** - Add to your `~/.bashrc` or `~/.zshrc`:
+```bash
+echo 'export GPG_TTY=$(tty)' >> ~/.bashrc
+source ~/.bashrc
+```
+
+This tells GPG which terminal to use for passphrase prompts.
+
 ### "gpg: signing failed: No secret key"
 
 This means your GPG key isn't properly configured:
