@@ -27,12 +27,19 @@ If you get an error about empty ident, run the commands above to set your identi
 ## Experiment Documentation
 
 ### Phase 2: Original Credentials
+
 Configuration set to my actual credentials:
 
 ![Original git configuration](images/02-original-credentials/git-config--original.jpg)
 
 ### Phase 3: Different Credentials
-*To be added*
+
+Configuration set to someone else' credentials:
+
+> [!NOTE]
+> I have taken her consent for this experimentation, and this work is just for educational cause.
+
+![Colleague's git configuration](images/03-different-credentials/git-config--faked.PNG)
 
 ### Phase 4: Back to Original
 *To be added*
