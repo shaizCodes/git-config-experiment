@@ -59,7 +59,10 @@ Configuration set to someone else' credentials:
 > ![Git Log results](images/04-git-and-github-results/git-log.jpg)
 
 > GitHub Commits History
-> ![Git Log results](images/04-git-and-github-results/github-commits-history.jpg)
+> ![GitHub Commits History](images/04-git-and-github-results/github-commits-history.jpg)
+
+> GitHub Contributors
+> ![GitHub Contributors](images/04-git-and-github-results/github-contributors.jpg)
 
 ## Notes
 
