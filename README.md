@@ -121,7 +121,7 @@ Configuration set to someone else' credentials:
 
 ### Defense & Best Practices
 
-> [!CRITICAL]
+> [!NOTE]
 > **GPG Signing is the Real Defense Against Identity Spoofing**
 >
 > GPG (GNU Privacy Guard) cryptographically proves you made a commit:
