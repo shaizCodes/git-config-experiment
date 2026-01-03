@@ -80,13 +80,19 @@ Configuration set to someone else' credentials:
 
 ![Git Log results](images/04-git-and-github-results/git-log.jpg)
 
+> Local Git repository shows her contribution.
+
 #### GitHub Commits History
 
 ![GitHub Commits History](images/04-git-and-github-results/github-commits-history.jpg)
 
+> GitHub shows her commit with her clickable profile (though, it was I who did that commit, not her actually.)
+
 #### GitHub Contributors
 
 ![GitHub Contributors](images/04-git-and-github-results/github-contributors.jpg)
+
+> She can be seen among the GitHub repository contributors.
 
 #### Non-existent Git User Configuration
 
@@ -95,6 +101,8 @@ Configuration set to someone else' credentials:
 #### Non-existent GitHub User Commit
 
 ![Non-existent GitHub User Commit](images/04-git-and-github-results/nonexistent-github-user-commit.jpg)
+
+> GitHub shows the email of the user who does not have GitHub profile, and therefore the profile is not clickable/navigable.
 
 ## Conclusion
 
@@ -105,8 +113,8 @@ Configuration set to someone else' credentials:
 >
 > **Findings:**
 > - Existent GitHub user with matching email → Appears as contributor with clickable profile
-> - Non-existent user with fake credentials → Commits visible but unverified, no profile link
-> - Identity is based on local configuration file anyone can change
+> - Non-existent user with fake credentials → Commits visible, but no profile link
+> - **Identity is based on local configuration file anyone can change**
 >
 > **Key Insight:** Git trusts the local configuration, but GitHub trusts the email-to-account mapping.
 
@@ -114,7 +122,7 @@ Configuration set to someone else' credentials:
 
 > [!WARNING]
 > **Security & Attribution Risks**
-> - **Identity Spoofing**: Anyone can attribute commits to a real GitHub user by changing local git config
+> - **Identity Spoofing**: Anyone can attribute commits to a real GitHub user by changing local git config (falsifying the commit author's identity, not the commit content itself)
 > - **False Attribution**: Commits can be made to appear as if done by someone else
 > - **Reputation Impact**: A user's contribution history could be polluted
 > - **Compliance Issues**: Could violate code review policies in professional settings
@@ -122,27 +130,51 @@ Configuration set to someone else' credentials:
 ### Defense & Best Practices
 
 > [!NOTE]
-> **GPG Signing is the Real Defense Against Identity Spoofing**
+> **GPG Signing Prevents Identity Spoofing**
 >
-> GPG (GNU Privacy Guard) cryptographically proves you made a commit:
+> Identity spoofing (falsifying commit authorship) is prevented by GPG because:
 > - Only your private key can sign commits
 > - GitHub verifies the signature against your public key
 > - Even with a faked email, the signature proves your identity
-> - GitHub marks verified commits with a ✓ badge
+> - GitHub marks commits with either **verfied** or **unverified** badges.
 
 **Quick Setup:**
-```bash
-gpg --full-generate-key                          # Generate key
-gpg --list-secret-keys --keyid-format=long       # Get key ID
-git config --global user.signingkey <KEY_ID>     # Set key
-git config --global commit.gpgSign true          # Enable signing
-gpg --armor --export <KEY_ID>                    # Export public key
-# Add public key to GitHub Settings → SSH and GPG keys
-```
+
+* Generate key
+
+  ```bash
+  gpg --full-generate-key
+  ```
+
+* Get key ID
+
+  ```bash
+  gpg --list-secret-keys --keyid-format=long
+  ```
+
+* Set key
+
+  ```bash
+  git config --global user.signingkey <KEY_ID>
+  ```
+* Enable signing
+
+  ```bash
+  git config --global commit.gpgSign true
+  ```
+
+* Export public key
+
+  ```bash
+  gpg --armor --export <KEY_ID>
+  ```
+
+* Add public key to [GitHub Settings → SSH and GPG keys](https://github.com/settings/keys)
 
 📖 **For detailed setup instructions, see [GPG_SETUP.md](GPG_SETUP.md)**
 
 **Additional Security Measures:**
+
 - Use your own credentials in git config
 - Enable two-factor authentication (2FA) on GitHub
 - Require GPG-signed commits for sensitive repositories
